@@ -2,13 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:camel="http://camel.apache.org/schema/spring"
-       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
           http://camel.apache.org/schema/spring
-          http://camel.apache.org/schema/spring/camel-spring.xsd
-          http://www.springframework.org/schema/util
-          http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+          http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 
     <camel:sslContextParameters id="sslContextParameters">
@@ -21,9 +18,13 @@
     </camel:sslContextParameters>
 
     <camelContext xmlns="http://camel.apache.org/schema/spring">
-        <route autoStartup="true" id="route">
+        <route autoStartup="true" id="websocketRoute">
             <from uri="websocket://0.0.0.0:8181/test?sslContextParameters=#sslContextParameters" />
             <to uri="log:websocketMessageReceived"/>
+        </route>
+        <route autoStartup="true" id="restletRoute">
+            <from uri="restlet:https://localhost:8080/test?sslContextParameters=#sslContextParameters" />
+            <to uri="log:restletMessageReceived"/>
         </route>
     </camelContext>
 

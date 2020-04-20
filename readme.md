@@ -7,4 +7,4 @@ enter the password, I used '123456', other fields could be left blank
 
 run Main, to start the route
 
-run WebsocketTest to check websocket.  
+run SslTests to check communication.  
