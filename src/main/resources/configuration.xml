@@ -10,10 +10,20 @@
           http://www.springframework.org/schema/util
           http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
+
+    <camel:sslContextParameters id="sslContextParameters">
+        <camel:keyManagers keyPassword="123456">
+            <camel:keyStore resource="self_signed_localhost.jks" password="123456"/>
+        </camel:keyManagers>
+        <camel:trustManagers>
+            <camel:keyStore resource="self_signed_localhost.jks" password="123456"/>
+        </camel:trustManagers>
+    </camel:sslContextParameters>
+
     <camelContext xmlns="http://camel.apache.org/schema/spring">
         <route autoStartup="true" id="route">
-            <from uri="websocket://0.0.0.0:8181/test" />
-            <to uri="log:end"/>
+            <from uri="websocket://0.0.0.0:8181/test?sslContextParameters=#sslContextParameters" />
+            <to uri="log:websocketMessageReceived"/>
         </route>
     </camelContext>
 
