@@ -25,14 +25,24 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
-            <version>3.2.0</version>
+            <version>2.25.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-websocket</artifactId>
-            <version>3.2.0</version>
+            <version>2.25.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-restlet</artifactId>
+            <version>2.25.1</version>
         </dependency>
 
         <dependency>
